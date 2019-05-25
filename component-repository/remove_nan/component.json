@@ -1,0 +1,32 @@
+{
+  "engineType": "Generic",
+  "language": "Python",
+  "userStandalone": false,
+  "name": "remove_nan",
+  "label": "DataFrame remove nan",
+  "program": "remove_nan.py",
+  "componentClass": "MCenterComponentAdapter",
+  "modelBehavior": "Auxiliary",
+  "useMLOps": true,
+  "inputInfo": [
+    {
+      "description": "In Pandas Dataframe",
+      "label": "datainframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "outputInfo": [
+    {
+      "description": "Out Pandas Dataframe",
+      "label": "dataoutframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "group": "Connectors",
+  "arguments": [],
+  "version": 1
+}

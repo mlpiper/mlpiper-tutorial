@@ -1,0 +1,73 @@
+{
+  "engineType": "Generic",
+  "language": "Python",
+  "userStandalone": false,
+  "name": "dataframe_to_db",
+  "label": "DataFrame to DB",
+  "program": "dataframe_to_db.py",
+  "componentClass": "MCenterComponentAdapter",
+  "modelBehavior": "Auxiliary",
+  "useMLOps": true,
+  "inputInfo": [
+    {
+      "description": "Pandas DataFrame",
+      "label": "dataframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "outputInfo": [
+    {
+      "description": "Pandas DataFrame",
+      "label": "dataframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "group": "Sinks",
+  "arguments": [
+    {
+      "key": "host",
+      "label": "mysql-hostname",
+      "type": "str",
+      "defaultComponent": "localhost",
+      "description": "MySql hostname",
+      "optional": true
+    },
+    {
+      "key": "user",
+      "label": "user",
+      "type": "str",
+      "defaultComponent": "pmuser",
+      "description": "User name",
+      "optional": true
+    },
+    {
+      "key": "password",
+      "label": "password",
+      "type": "str",
+      "defaultComponent": "pmuser",
+      "description": "MySql access password",
+      "optional": true
+    },
+    {
+      "key": "db",
+      "label": "database",
+      "type": "str",
+      "defaultComponent": "mcenter",
+      "description": "Database to use",
+      "optional": true
+    },
+    {
+      "key": "table",
+      "label": "table",
+      "type": "str",
+      "defaultComponent": "deftable",
+      "description": "Table to use",
+      "optional": true
+    }
+  ],
+  "version": 1
+}

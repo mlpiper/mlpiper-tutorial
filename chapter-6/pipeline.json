@@ -1,0 +1,27 @@
+{
+      "name": "DB fetch test",
+      "engineType": "Generic",
+      "pipe": [
+          {
+              "name": "db_to_dataframe",
+              "id": 1,
+              "type": "db_to_dataframe",
+              "parents": [],
+              "arguments":
+              {
+                  "host": "localhost",
+                  "user": "pmuser",
+                  "password": "P3M3Admin!",
+                  "db": "dataset",
+                  "table": "dloan"
+              }
+          },
+          {
+              "name": "dataframe_to_file",
+              "id": 2,
+              "type": "dataframe_to_file",
+              "parents": [{"parent": 1, "output": 0, "input": 0}],
+              "arguments": {"sinkfilename": "/tmp/DB_loan.csv"}
+          }
+     ]
+}

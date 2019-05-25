@@ -1,0 +1,34 @@
+{
+      "name": "Feauture Engineering test",
+      "engineType": "Generic",
+      "pipe": [
+          {
+              "name": "file_to_dataframe",
+              "id": 1,
+              "type": "file_to_dataframe",
+              "parents": [],
+              "arguments": {"filename": "/tmp/loan.csv"}
+          },
+          {
+              "name": "remove_nan",
+              "id": 2,
+              "type": "remove_nan",
+              "parents": [{"parent": 1, "output": 0, "input": 0}],
+              "arguments": {}
+          },
+          {
+              "name": "dataframe_to_db",
+              "id": 3,
+              "type": "dataframe_to_db",
+              "parents": [{"parent": 2, "output": 0, "input": 0}],
+              "arguments":
+              {
+                  "host": "localhost",
+                  "user": "pmuser",
+                  "password": "P3M3Admin!",
+                  "db": "dataset",
+                  "table": "dloan"
+              }
+          }
+     ]
+}

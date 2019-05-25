@@ -1,0 +1,20 @@
+{
+      "name": "Feauture Engineering test",
+      "engineType": "Generic",
+      "pipe": [
+          {
+              "name": "file_to_dataframe",
+              "id": 1,
+              "type": "file_to_dataframe",
+              "parents": [],
+              "arguments": {"filename": "/tmp/loan.csv"}
+          },
+          {
+              "name": "dataframe_to_file",
+              "id": 2,
+              "type": "dataframe_to_file",
+              "parents": [{"parent": 1, "output": 0, "input": 0}],
+              "arguments": {"sinkfilename": "/tmp/rewrite_loan.csv"}
+          }
+     ]
+}
