@@ -1,0 +1,24 @@
+{
+      "name": "Simple MCenter runner test",
+      "engineType": "Generic",
+      "pipe": [
+          {
+              "name": "Source String",
+              "id": 1,
+              "type": "string-source",
+              "parents": [],
+              "arguments": {
+                  "value": "Hello World: testing string source and sink"
+              }
+          },
+          {
+              "name": "Sink String",
+              "id": 2,
+              "type": "string-sink",
+              "parents": [{"parent": 1, "input": 0, "output": 0}],
+              "arguments": {
+                  "expected-value": "Hello World: testing string source and sink"
+              }
+          }
+     ]
+}
