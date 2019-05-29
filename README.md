@@ -42,7 +42,7 @@ Tutorial, starter guide to designing MCenter components
   * sqlalchemy
 
   In addtion, it is helpful to have access to a MySQL instance.  A MySQL Docker container can be found at
-   https://hub.docker.com/\_/mysql
+   https://hub.docker.com/_/mysql
 
   Launch the MySQL instance with the following command:
 
