@@ -13,8 +13,8 @@ Tutorial, starter guide to designing MCenter components
 * Chapter-2 (run02.sh)
   Pipeline to load file from local filesystem to in memory DataFrame using the
   Pandas python package. The pipeline comprises of 2 (source and sink) components
-  "file_to_dataframe" to load file from user provided path to dataframe and
-  "dataframe_to_file" to save the dataframe to a file on the user provided path.
+  "file\_to\_dataframe" to load file from user provided path to dataframe and
+  "dataframe\_to\_file" to save the dataframe to a file on the user provided path.
 
   In order to run the pipeline, download the preprocessed LendingClub dataset
   to /tmp/loan.csv
@@ -23,7 +23,7 @@ Tutorial, starter guide to designing MCenter components
   > ./run02.sh
 
 * Chapter-3 (run03.sh)
-  The Pipeline component "remove_nan" is added to perform simple Feature Engineering
+  The Pipeline component "remove\_nan" is added to perform simple Feature Engineering
   or removing NaNs from the dataset "/tmp/loan.csv". The pipeline loads the file in
   memory as a dataframe, the pandas dataframe is used to perform "dropna()" operation
   before the dataframe is persisted to the file-path provided by user.
@@ -31,12 +31,38 @@ Tutorial, starter guide to designing MCenter components
   > ./run03.sh
 
 * Chapter-4 (run04.sh)
-  Pipeline component "dataframe_to_db" is used to save contents to the database(MySql)
+  Pipeline component "dataframe\_to\_db" is used to save contents to the database(MySql)
   The ML App, loads the file in memory as a dataframe, the pandas dataframe is used to
   write the dataset to the Database using the DB input parameter provided.
 
-  > mysql -u $<USER> -p
-  > create database <dataset> ;
+  This example requires some additional setup.  Within your MLPiper Python virtual environment, be
+  sure to pip install the following packages:
+  * cryptography
+  * pymysql
+  * sqlalchemy
+
+  In addtion, it is helpful to have access to a MySQL instance.  A MySQL Docker container can be found at
+   https://hub.docker.com/\_/mysql
+
+  Launch the MySQL instance with the following command:
+
+  > docker run --name <instance-name> -e MYSQL\_ROOT\_PASSWORD=<my-root-pw> -d mysql:latest
+
+  Access the command line of the container in order to configure the database:
+
+  > docker exec -it <instance-name> bash
+
+  At the command line, access the MySQL command line as the root user:
+
+  > mysql -uroot -p
+
+  Create the user and the database that will be used for this example:
+
+  > CREATE USER 'pmuser'@'%' IDENTIFIED BY 'P3M3Admin!';
+  > GRANT ALL PRIVILEGES ON * . * TO 'pmuser'@'%';
+  > CREATE DATABASE dataset;
+
+  Exit out of the MySQL command line and the Docker container.
 
   The pipeline creates a table, (dloan in database: dataset) or any other table name
   based on the parameter provided
@@ -44,14 +70,13 @@ Tutorial, starter guide to designing MCenter components
   > ./run04.sh
 
 * Chapter-5 (run05.sh)
-  The Pipeline components "remove_nan", "dataframe_to_db" "dataframe_to_file" are used
+  The Pipeline components "remove\_nan", "dataframe\_to\_db" "dataframe\_to\_file" are used
   to perform feature engineering on the dataset followed by writing the dataset to the
   Database and the dataset is written to a file. The ML App, loads the file in memory as
   a dataframe, the pandas dataframe is used to perform "dropna()" operation before the
   pandas dataframe is used to write both to the DataBase and a file.
 
-  > mysql -u $<USER> -p
-  > create database <dataset> ;
+  This example uses the same setup as in Chapter-4.
 
   The pipeline creates a table, (dloan in database: dataset) or any other table name
   based on the parameter provided
@@ -59,9 +84,9 @@ Tutorial, starter guide to designing MCenter components
   > ./run05.sh
 
 * Chapter-6 (run06.sh)
-  Pipeline component "db_to_dataframe" is used to load contents from the database(MySql)
+  Pipeline component "db\_to\_dataframe" is used to load contents from the database(MySql)
   to the Pandas dataframe, the dataframe is then saved to a file.
 
-  Required: RUN Chapter-4 OR Chapter-5 before running Chapter-6 pipeline
+  Required: RUN Chapter-4 OR Chapter-5 before running the Chapter-6 pipeline
 
   > ./run06.sh
