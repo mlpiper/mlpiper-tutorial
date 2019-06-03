@@ -92,3 +92,16 @@ Tutorial, starter guide to designing MCenter components
   Required: RUN Chapter-4 OR Chapter-5 before running the Chapter-6 pipeline
 
   > ./run06.sh
+
+* Chapter-7 (run07.sh)
+  The Pipeline components "db_to_dataframe", and "XGBoostTrain" are used to perform XGBoost
+  Training using the dataset read from the Database to the Pandas dataframe. The dataframe
+  is used by the "XGBoostTrain" component  to train a XGBoost model. During the course of
+  training the required model, various charateristics are recorded (using mlops API) and
+  the resulting model is exported/saved as a pickle file.
+
+  Required: RUN Chapter-5 before running Chapter-7 pipeline
+
+  > ./run07.sh
+
+
