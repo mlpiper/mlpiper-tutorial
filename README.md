@@ -40,6 +40,8 @@ Tutorial, starter guide to designing MCenter components
   * cryptography
   * pymysql
   * sqlalchemy
+  
+  > pip install flask-sqlalchemy pymysql cryptography
 
   In addtion, it is helpful to have access to a MySQL instance.  A MySQL Docker container can be found at
    https://hub.docker.com/_/mysql
@@ -90,3 +92,23 @@ Tutorial, starter guide to designing MCenter components
   Required: RUN Chapter-4 OR Chapter-5 before running the Chapter-6 pipeline
 
   > ./run06.sh
+
+* Chapter-7 (run07.sh)
+  The Pipeline components "db_to_dataframe", and "XGBoostTrain" are used to perform XGBoost
+  Training using the dataset read from the Database to the Pandas dataframe. The dataframe
+  is used by the "XGBoostTrain" component  to train a XGBoost model. During the course of
+  training the required model, various charateristics are recorded (using mlops API) and
+  the resulting model is exported/saved as a pickle file.
+  
+  This example requires some additional setup.  Within your MLPiper Python virtual environment, be
+  sure to pip install the following packages:
+  * xgboost
+  * sklearn_pandas
+  
+  > pip install xgboost sklearn_pandas
+
+  Required: RUN Chapter-5 before running Chapter-7 pipeline
+
+  > ./run07.sh
+
+
