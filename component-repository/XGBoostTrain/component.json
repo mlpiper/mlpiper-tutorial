@@ -6,7 +6,7 @@
   "label": "XGBoostTrain",
   "description": "Component is responsible for creating XGBoost training on loan data ",
   "program": "XGBoostTrain.py",
-  "modelBehavior": "Auxiliary",
+  "modelBehavior": "ModelProducer",
   "componentClass": "XGBoostTrain",
   "group": "Algorithms",
   "userStandalone": false,
