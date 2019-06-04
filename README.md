@@ -40,6 +40,8 @@ Tutorial, starter guide to designing MCenter components
   * cryptography
   * pymysql
   * sqlalchemy
+  
+  > pip install flask-sqlalchemy pymysql cryptography
 
   In addtion, it is helpful to have access to a MySQL instance.  A MySQL Docker container can be found at
    https://hub.docker.com/_/mysql
