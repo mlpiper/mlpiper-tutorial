@@ -8,7 +8,7 @@
   "componentClass": "MCenterComponentAdapter",
   "modelBehavior": "Auxiliary",
   "useMLOps": true,
-  "deps": ["Flask-SQLAlchemy", "sqlalchemy"],
+  "deps": ["Flask-SQLAlchemy", "sqlalchemy", "pymysql"],
   "inputInfo": [
     {
       "description": "Pandas DataFrame",
