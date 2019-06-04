@@ -99,6 +99,13 @@ Tutorial, starter guide to designing MCenter components
   is used by the "XGBoostTrain" component  to train a XGBoost model. During the course of
   training the required model, various charateristics are recorded (using mlops API) and
   the resulting model is exported/saved as a pickle file.
+  
+  This example requires some additional setup.  Within your MLPiper Python virtual environment, be
+  sure to pip install the following packages:
+  * xgboost
+  * sklearn_pandas
+  
+  > pip install xgboost sklearn_pandas
 
   Required: RUN Chapter-5 before running Chapter-7 pipeline
 
