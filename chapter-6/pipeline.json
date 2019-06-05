@@ -1,27 +1,48 @@
 {
-      "name": "DB fetch test",
+      "name": "Create Inference Dataset",
       "engineType": "Generic",
       "pipe": [
           {
-              "name": "db_to_dataframe",
+              "name": "file_to_dataframe",
               "id": 1,
-              "type": "db_to_dataframe",
+              "type": "file_to_dataframe",
               "parents": [],
+              "arguments": {"filename": "/tmp/loan.csv"}
+          },
+          {
+              "name": "remove_nan",
+              "id": 2,
+              "type": "remove_nan",
+              "parents": [{"parent": 1, "output": 0, "input": 0}],
+              "arguments": {}
+          },
+          {
+              "name": "inf_dataset",
+              "id": 3,
+              "type": "inf_dataset",
+              "parents": [{"parent": 2, "output": 0, "input": 0}],
+              "arguments": {"label_column": "bad_loan", "infer_data_split": 0.3}
+          },
+          {
+              "name": "dataframe_to_db",
+              "id": 4,
+              "type": "dataframe_to_db",
+              "parents": [{"parent": 3, "output": 0, "input": 0}],
               "arguments":
               {
                   "host": "localhost",
                   "user": "pmuser",
                   "password": "P3M3Admin!",
                   "db": "dataset",
-                  "table": "dloan"
+                  "table": "infdloan"
               }
           },
           {
               "name": "dataframe_to_file",
-              "id": 2,
+              "id": 5,
               "type": "dataframe_to_file",
-              "parents": [{"parent": 1, "output": 0, "input": 0}],
-              "arguments": {"sinkfilename": "/tmp/DB_loan.csv"}
+              "parents": [{"parent": 3, "output": 0, "input": 0}],
+              "arguments": {"sinkfilename": "/tmp/FE_Inf_loan.csv"}
           }
      ]
 }
