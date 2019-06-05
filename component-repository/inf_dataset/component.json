@@ -1,0 +1,49 @@
+{
+  "engineType": "Generic",
+  "language": "Python",
+  "userStandalone": false,
+  "name": "inf_dataset",
+  "label": "DataFrame Generate Inference dataset",
+  "program": "inf_dataset.py",
+  "componentClass": "MCenterComponentAdapter",
+  "modelBehavior": "Auxiliary",
+  "useMLOps": true,
+  "inputInfo": [
+    {
+      "description": "In Pandas Dataframe",
+      "label": "datainframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "outputInfo": [
+    {
+      "description": "Out Pandas Dataframe",
+      "label": "dataoutframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "group": "FeatureEng",
+  "arguments": [
+    {
+      "key": "label_column",
+      "label": "Label to remove",
+      "type": "string",
+      "description": "Label on the dataset to be removed.",
+      "optional": true,
+      "defaultValue": "bad_loan"
+    },
+    {
+	  "key": "infer_data_split",
+      "label": "Inference Split Portion",
+      "type": "float",
+      "description": "Inference  Split Portion.",
+      "optional": true,
+      "defaultValue": 0.3
+    }
+  ],
+  "version": 1
+}

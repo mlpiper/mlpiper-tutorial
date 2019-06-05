@@ -1,5 +1,5 @@
 {
-      "name": "DB fetch + XGB Train",
+      "name": "DB fetch test",
       "engineType": "Generic",
       "pipe": [
           {
@@ -16,31 +16,12 @@
                   "table": "dloan"
               }
           },
-		  {
-              "name": "XGBoostTrain",
+          {
+              "name": "dataframe_to_file",
               "id": 2,
-              "type": "XGBoostTrain",
+              "type": "dataframe_to_file",
               "parents": [{"parent": 1, "output": 0, "input": 0}],
-              "arguments": {
-                  "validation_split": 0.3,
-                  "auc_threshold": 0.5,
-                  "ks_threshold": 0.3,
-                  "psi_threshold": 1,
-                  "n_estimators": 300,
-                  "max_depth": 7,
-                  "learning_rate": 0.1,
-                  "min_child_weight": 1,
-                  "objective": "binary:logistic",
-                  "gamma": 0,
-                  "max_delta_step": 0,
-                  "subsample": 1,
-                  "reg_alpha": 0,
-                  "reg_lambda": 0,
-                  "scale_pos_weight": 1.2,
-                  "categorical_cols": ["verification_status", "addr_state", "purpose", "home_ownership", "term"],
-                  "input_file": "/tmp/dloan_train.csv",
-                  "output-model": "/tmp/def-loan-model.pkl"
-              }
+              "arguments": {"sinkfilename": "/tmp/DB_loan.csv"}
           }
      ]
 }
