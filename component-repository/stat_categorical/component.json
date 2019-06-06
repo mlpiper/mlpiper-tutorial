@@ -27,15 +27,6 @@
     }
   ],
   "group": "FeatureEng",
-  "arguments": [
-    {
-      "key": "label_column",
-      "label": "Label Statistics",
-      "type": "string",
-      "description": "Label Stats for the coulums (Catagorical)",
-      "optional": true,
-      "defaultValue": "bad_loan"
-    }
-  ],
+  "arguments": [],
   "version": 1
 }
