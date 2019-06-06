@@ -17,33 +17,33 @@ from parallelm.mlops.predefined_stats import PredefinedStats
 #class MCenterComponentAdapter(ConnectableComponent):
 class MCenterStatsComponentAdapter(ConnectableComponent):
     """
-    Adapter for get_label_stats
+    Adapter for get_prediction_stats
     """
 
     def __init__(self, engine):
         super(self.__class__, self).__init__(engine)
 
-    def _gen_label_stats(self, df_data):
+    def _get_prediction_stats(self, df_data):
         """
         Stats component:
-           generate distribution of label column for the given dataset 
-           return: unchanged dataset used to generate the stats 
+           generate label distribution for the given prediction probabilities
+           return: unchanged probability dataset
         """
         
         # Initialize MLOps Library
         mlops.init()
-
-        print("df_data : {}".format(df_data))
         y = df_data.T.idxmax()
 
-        print("y ={}".format(y))
 	# Label distribution:
         value, counts = np.unique(y, return_counts=True)
         label_distribution = np.asarray((value, counts)).T
-        self._logger.info("Label distributions: Count {}\n values{}".format(counts, label_distribution))
+        self._logger.info("Label distributions: Count {}\n values{}".format(counts,
+            label_distribution))
 
         # Output Label distribution as a BarGraph using MCenter
-        export_bar_table(label_distribution[:,0], label_distribution[:,1], "Label Distribution")
+        export_bar_table(label_distribution[:,0],
+                label_distribution[:,1],
+                "Label Distribution")
 
         #Record the data distribution stats for the DataFrame
         mlops.set_data_distribution_stat(df_data)
@@ -54,7 +54,7 @@ class MCenterStatsComponentAdapter(ConnectableComponent):
         return df_data
 
     def _materialize(self, parent_data_objs, user_data):
-        df_set = self._gen_label_stats(parent_data_objs[0])
+        df_set = self._get_prediction_stats(parent_data_objs[0])
         return[df_set]
 
 

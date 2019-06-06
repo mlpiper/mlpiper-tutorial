@@ -21,7 +21,7 @@
               "id": 3,
               "type": "stat_categorical",
               "parents": [{"parent": 2, "output": 0, "input": 0}],
-              "arguments": {"label_column": "bad_loan"}
+              "arguments": {}
          }
      ]
 }
