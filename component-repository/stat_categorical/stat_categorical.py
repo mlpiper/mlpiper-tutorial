@@ -32,11 +32,11 @@ class MCenterStatsComponentAdapter(ConnectableComponent):
         
         # Initialize MLOps Library
         mlops.init()
-        
-        # get the Label-column
-        label_col = self._params["label_column"]
-        y = df_data[label_col]
-        self._logger.info("label_col= {}".format(label_col))
+
+        print("df_data : {}".format(df_data))
+        y = df_data.T.idxmax()
+
+        print("y ={}".format(y))
 	# Label distribution:
         value, counts = np.unique(y, return_counts=True)
         label_distribution = np.asarray((value, counts)).T
