@@ -7,7 +7,7 @@
               "id": 1,
               "type": "file_to_dataframe",
               "parents": [],
-              "arguments": {"filename": "/tmp/loan.csv"}
+              "arguments": {"filename": "/tmp/datarobot_4_predictions.out"}
           },
           {
               "name": "remove_nan",
