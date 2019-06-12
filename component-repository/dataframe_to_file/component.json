@@ -5,12 +5,12 @@
   "name": "dataframe_to_file",
   "label": "Sink DataFrame to File",
   "program": "dataframe_to_file.py",
-  "componentClass": "MCenterComponentAdapter",
+  "componentClass": "MCenterWriteDFComponentAdapter",
   "modelBehavior": "Auxiliary",
   "useMLOps": true,
   "inputInfo": [
     {
-      "description": "Pandas DataFrame",
+      "description": "Input Pandas DataFrame",
       "label": "dataframe",
       "defaultComponent": "",
       "type": "dataframe",
@@ -19,7 +19,7 @@
   ],
   "outputInfo": [
     {
-      "description": "File name",
+      "description": "File used to write Dataframe contents",
       "label": "filename",
       "defaultComponent": "",
       "type": "str",
@@ -32,7 +32,7 @@
       "key": "sinkfilename",
       "label": "save to file",
       "type": "str",
-      "description": "Save DataFrame to file",
+      "description": "File used to save DataFrame contents",
       "optional": true
     }
   ],
