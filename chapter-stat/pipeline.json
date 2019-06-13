@@ -1,0 +1,27 @@
+{
+      "name": "Feauture Engineering Label stats",
+      "engineType": "Generic",
+      "pipe": [
+          {
+              "name": "file_to_dataframe",
+              "id": 1,
+              "type": "file_to_dataframe",
+              "parents": [],
+              "arguments": {"filename": "/tmp/datarobot_4_predictions.out"}
+          },
+          {
+              "name": "remove_nan",
+              "id": 2,
+              "type": "remove_nan",
+              "parents": [{"parent": 1, "output": 0, "input": 0}],
+              "arguments": {}
+          },
+          {
+              "name": "stat_categorical",
+              "id": 3,
+              "type": "stat_categorical",
+              "parents": [{"parent": 2, "output": 0, "input": 0}],
+              "arguments": {}
+         }
+     ]
+}

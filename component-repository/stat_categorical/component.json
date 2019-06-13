@@ -1,0 +1,32 @@
+{
+  "engineType": "Generic",
+  "language": "Python",
+  "userStandalone": false,
+  "name": "stat_categorical",
+  "label": "DataFrame Generate Label Statistics",
+  "program": "stat_categorical.py",
+  "componentClass": "MCenterStatsComponentAdapter",
+  "modelBehavior": "Auxiliary",
+  "useMLOps": true,
+  "inputInfo": [
+    {
+      "description": "In Pandas Dataframe",
+      "label": "datainframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "outputInfo": [
+    {
+      "description": "Out Pandas Dataframe",
+      "label": "dataoutframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "group": "FeatureEng",
+  "arguments": [],
+  "version": 1
+}

@@ -85,15 +85,15 @@ Tutorial, starter guide to designing MCenter components
 
   > ./run05.sh
 
-* Chapter-6 (run06.sh)
+* Chapter-7 (run07.sh)
   Pipeline component "db\_to\_dataframe" is used to load contents from the database(MySql)
   to the Pandas dataframe, the dataframe is then saved to a file.
 
   Required: RUN Chapter-4 OR Chapter-5 before running the Chapter-6 pipeline
 
-  > ./run06.sh
+  > ./run07.sh
 
-* Chapter-7 (run07.sh)
+* Chapter-8 (run08.sh)
   The Pipeline components "db_to_dataframe", and "XGBoostTrain" are used to perform XGBoost
   Training using the dataset read from the Database to the Pandas dataframe. The dataframe
   is used by the "XGBoostTrain" component  to train a XGBoost model. During the course of
@@ -107,8 +107,8 @@ Tutorial, starter guide to designing MCenter components
   
   > pip install xgboost sklearn_pandas
 
-  Required: RUN Chapter-5 before running Chapter-7 pipeline
+  Required: RUN Chapter-5 before running Chapter-8 pipeline
 
-  > ./run07.sh
+  > ./run08.sh
 
 

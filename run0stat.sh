@@ -1,3 +1,3 @@
-mlpiper run -f chapter-7/pipeline.json \
+mlpiper run -f chapter-stat/pipeline.json \
     -r ./component-repository/ \
 	-d ./deploy --force
