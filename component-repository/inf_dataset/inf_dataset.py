@@ -31,20 +31,18 @@ class MCenterComponentAdapter(ConnectableComponent):
         """
         # Drop the Label-column
         label_col = self._params["label_column"]
-        df_data = df_data.drop(label_col, axis=1)
+        df_data.drop(label_col, axis=1, inplace=True)
 
         # Splitting the data to train and test sets:
-        infer_data = np.split(df_data, [int(self._params["infer_data_split"]) * len(df_data)])
-        return infer_data
+        return (df_data.sample(frac=float(self._params["infer_data_split"]),
+                                    random_state=1))
 
     def _materialize(self, parent_data_objs, user_data):
+        df_infer_set = self._gen_inf_dataset(parent_data_objs[0])
         # Initialize MLOps Library
         mlops.init()
-        df_infer_set = self._gen_inf_dataset(parent_data_objs[0])
-
     	#Record the data distribution stats for the DataFrame
         mlops.set_data_distribution_stat(df_infer_set)
-
         # Terminate MLOPs
         mlops.done()
         return[df_infer_set]
