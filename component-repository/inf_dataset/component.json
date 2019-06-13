@@ -1,16 +1,19 @@
 {
+  "version": 1,
+  "group": "FeatureEng",
   "engineType": "Generic",
   "language": "Python",
   "userStandalone": false,
   "name": "inf_dataset",
   "label": "DataFrame Generate Inference dataset",
+  "description": "Generate Inference dataset, providing fraction of input dataset",
   "program": "inf_dataset.py",
   "componentClass": "MCenterComponentAdapter",
   "modelBehavior": "Auxiliary",
   "useMLOps": true,
   "inputInfo": [
     {
-      "description": "In Pandas Dataframe",
+      "description": "Input Pandas Dataframe",
       "label": "datainframe",
       "defaultComponent": "",
       "type": "dataframe",
@@ -19,14 +22,13 @@
   ],
   "outputInfo": [
     {
-      "description": "Out Pandas Dataframe",
+      "description": "Output Pandas Dataframe",
       "label": "dataoutframe",
       "defaultComponent": "",
       "type": "dataframe",
       "group": "data"
     }
   ],
-  "group": "FeatureEng",
   "arguments": [
     {
       "key": "label_column",
@@ -44,6 +46,5 @@
       "optional": true,
       "defaultValue": 0.3
     }
-  ],
-  "version": 1
+  ]
 }

@@ -36,13 +36,6 @@
                   "db": "dataset",
                   "table": "infdloan"
               }
-          },
-          {
-              "name": "dataframe_to_file",
-              "id": 5,
-              "type": "dataframe_to_file",
-              "parents": [{"parent": 3, "output": 0, "input": 0}],
-              "arguments": {"sinkfilename": "/tmp/FE_Inf_loan.csv"}
           }
      ]
 }
