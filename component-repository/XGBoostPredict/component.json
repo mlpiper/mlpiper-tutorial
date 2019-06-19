@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "group": "Algorithms",
+  "engineType": "Generic",
+  "language": "Python",
+  "name": "XGBoostPredict",
+  "label": "XGBoost Classification Prediction",
+  "description": "Component is responsible for creating prediction from given scikit-learn pickled model",
+  "program": "XGBoostPredict.py",
+  "modelBehavior": "ModelConsumer",
+  "componentClass": "XGBoostPredict",
+  "useMLOps": true,
+  "userStandalone": false,
+  "deps": ["xgboost", "scikit-learn"],
+  "inputInfo": [
+    {
+      "description": "Input Pandas DataFrame",
+      "label": "dataframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "outputInfo": [
+    {
+      "description": "Output Pandas DataFrame Prediction Results",
+      "label": "dataframe",
+      "defaultComponent": "",
+      "type": "dataframe",
+      "group": "data"
+    }
+  ],
+  "arguments": [
+    {
+      "key": "input-model",
+      "label": "Model input file",
+      "type": "str",
+      "description": "File to use for loading model",
+      "optional": true,
+      "tag": "input_model_path"
+    }
+  ]
+}
+
