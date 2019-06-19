@@ -85,6 +85,13 @@ Tutorial, starter guide to designing MCenter components
 
   > ./run05.sh
 
+* Chapter-6 (run06.sh)
+  Similar to the pipeline in Chapter-5, reusing the "file_to_dataframe", "remove\_nan",
+  and "dataframe\_to\_db" along with "inf_dataset" to generate the required inference 
+  dataset.
+
+  > ./run06.sh
+
 * Chapter-7 (run07.sh)
   Pipeline component "db\_to\_dataframe" is used to load contents from the database(MySql)
   to the Pandas dataframe, the dataframe is then saved to a file.
@@ -111,4 +118,23 @@ Tutorial, starter guide to designing MCenter components
 
   > ./run08.sh
 
+* Chapter-9 (run09.sh)
+  The Pipeline components "db_to_dataframe", and "XGBoostPredict" are used for predictions
+  using the models produced by XGBoostTrain pipeline (run08.sh). The prediction is performed
+  on the dataset read from the Database to the Pandas dataframe. The model pickle file is
+  read and loaded to perform predictions on the dataframe being passed, result of predictions
+  along with the class prediction probabilites is returned as dataframe, passed down to 
+  component "dataframe_to_db" to persist the prediction to the Database.
 
+  This example requires some additional setup.  Within your MLPiper Python virtual environment,
+  be sure to pip install the following packages:
+  * sqlalchemy
+  * pymysql
+  * sklearn_pandas
+  * xgboost
+
+  > pip install sqlalchemy xgboost sklearn_pandas pymysql
+
+  Required: RUN Chapter-5 and Chapter-8 before running Chapter-9 pipeline
+
+  > ./run09.sh
