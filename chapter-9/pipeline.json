@@ -1,0 +1,45 @@
+{
+      "name": "DB fetch + XGB Inference",
+      "engineType": "Generic",
+      "pipe": [
+          {
+              "name": "db_to_dataframe",
+              "id": 1,
+              "type": "db_to_dataframe",
+              "parents": [],
+              "arguments":
+              {
+                  "host": "localhost",
+                  "user": "pmuser",
+                  "password": "P3M3Admin!",
+                  "db": "dataset",
+                  "table": "infdloan"
+              }
+          },
+		  {
+              "name": "XGBoostPredict",
+              "id": 2,
+              "type": "XGBoostPredict",
+              "parents": [{"parent": 1, "output": 0, "input": 0}],
+              "arguments": {
+                  "ks_threshold": 0.3,
+                  "psi_threshold": 1,
+                  "input-model": "/tmp/def-loan-model.pkl"
+              }
+          },
+          {
+              "name": "dataframe_to_db",
+              "id": 4,
+              "type": "dataframe_to_db",
+              "parents": [{"parent": 2, "output": 0, "input": 0}],
+              "arguments":
+              {
+                  "host": "localhost",
+                  "user": "pmuser",
+                  "password": "P3M3Admin!",
+                  "db": "dataset",
+                  "table": "resultdloan"
+              }
+          }
+     ]
+}

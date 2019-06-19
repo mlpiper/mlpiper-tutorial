@@ -41,11 +41,11 @@ class XGBoostTrain(ConnectableComponent):
         #mlops Init
         mlops.init()
 
-        mlops.set_data_distribution_stat(df_dataset)
         y = df_dataset[train_on_col]
         self._logger.info("train_on_col= {}".format(train_on_col))
         self._logger.info("df_dataset {}".format(df_dataset.shape[1]))
         X = df_dataset.drop(train_on_col, axis=1)
+        mlops.set_data_distribution_stat(X)
         self._logger.info("df_dataset {}".format(X.shape[1]))
 
         # Splitting the data to train and test sets:

@@ -5,7 +5,7 @@
   "name": "dataframe_to_db",
   "label": "DataFrame to DB",
   "program": "dataframe_to_db.py",
-  "componentClass": "MCenterComponentAdapter",
+  "componentClass": "MCenterDBInsertAdapter",
   "modelBehavior": "Auxiliary",
   "useMLOps": true,
   "deps": ["Flask-SQLAlchemy", "sqlalchemy", "pymysql"],

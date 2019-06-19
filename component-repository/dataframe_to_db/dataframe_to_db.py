@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 from parallelm.components import ConnectableComponent
 from parallelm.mlops import mlops as mlops
 
-class MCenterComponentAdapter(ConnectableComponent):
+class MCenterDBInsertAdapter(ConnectableComponent):
     """
     Adapter for df_to_db
     """
@@ -31,31 +31,25 @@ class MCenterComponentAdapter(ConnectableComponent):
 
     def _materialize(self, parent_data_objs, user_data):
         df_dataset = parent_data_objs[0]
+        # Type check of incomming parameters
+        if not isinstance(df_dataset, pandas.core.frame.DataFrame):
+            self._logger.debug("Datatype mismatch got {}".format(type(df_dataset)))
+            raise Exception("Datatype mismatch got {}".format(type(df_dataset)))
+
+        self._logger.info(" df_dataset: {}".format(df_dataset))
         engine = self._get_db_connection()
         db_table = self._params["table"]
         db_name = self._params["db"]
-        insert_count = df_to_db(engine, df_dataset, db_table, db_name)
+        insert_count = self._df_to_db(engine, df_dataset, db_table, db_name)
         return[insert_count]
 
-
-def df_to_db(engine, df_sink, table, database):
-    """
-    Save DataFrame to Database
-    """
-    mlops.init()
-    df_sink.to_sql(con = engine, name = table, if_exists = 'replace')
-    mlops.set_stat(database.join(table), df_sink.shape[0])
-    mlops.done()
-    return(df_sink.shape[0])
-
-
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--host", default='localhost', help="MySql hostname")
-    parser.add_argument("--user", default='pmuser', help="User nam")
-    parser.add_argument("--password", default='password', help="MySql access password")
-    parser.add_argument("--db", default='dataset', help="Database to use")
-    parser.add_argument("--table", default='dloan', help="Database Table to use")
-    options = parser.parse_args()
-    return options
+    def _df_to_db(self, engine, df_sink, table, database):
+        """
+        Save DataFrame to Database
+        """
+        mlops.init()
+        df_sink.to_sql(con = engine, name = table, if_exists = 'replace', index=False)
+        mlops.set_stat(database.join(table), df_sink.shape[0])
+        mlops.done()
+        return(df_sink.shape[0])
 
